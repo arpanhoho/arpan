@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Home page route
 @app.route("/")
 def home():
-    return render_template("index.html", title="My Python Website", name="Arpan Singh")
+    return render_template()
 
 # About page route 
 @app.route("/about") 
@@ -30,4 +30,5 @@ def open_browser():
 if __name__ == "__main__":
     threading.Timer(1, open_browser).start()
     app.run(debug=True, host="127.0.0.1", port=5000)
+
 
