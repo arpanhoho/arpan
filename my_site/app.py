@@ -1,33 +1,19 @@
-from flask import Flask
-import webbrowser
-import threading
+from flask import Flask, send_from_directory, render_template_string
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
-# Home page route
-@app.route("/")
+@app.route('/')
 def home():
-    return open("index.html").read()
+    return render_template_string(open("index.html").read())
 
-# About page route 
-@app.route("/about") 
-def about(): 
-    return "<h1>About Page</h1><p>Python just for fun haha.</p>"
-
-# Calculator page route
-@app.route("/calculator")
+@app.route('/calculator')
 def calculator():
-    return open("calculator.html").read()
+    return render_template_string(open("calculator.html").read())
 
-# Tictactoe page route
-@app.route("/tictactoe")
+@app.route('/tictactoe')
 def tictactoe():
-    return open("tictactoe.html").read()
+    return render_template_string(open("tictactoe.html").read())
 
-def open_browser():
-    webbrowser.open_new("http://127.0.0.1:5000")
-
-if __name__ == "__main__":
-    threading.Timer(1, open_browser).start()
-    app.run(debug=True, host="127.0.0.1", port=5000)
-
+@app.route('/style.css')
+def css():
+    return send_from_directory(".", "style.css")
