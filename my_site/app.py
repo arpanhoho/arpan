@@ -18,6 +18,11 @@ def about():
 @app.route("/calculator")
 def calculator():
     return render_template("calculator.html"),"<h1>Calculator</h1><p>A simple calculator.</p>"
+    
+#Tictactoe page route
+@app.route("/tictactoe")
+def tictactoe():
+    return render_template("tictactoe.html")
 
 def open_browser():
     webbrowser.open_new("http://127.0.0.1:5000")
@@ -25,3 +30,4 @@ def open_browser():
 if __name__ == "__main__":
     threading.Timer(1, open_browser).start()
     app.run(debug=True, host="127.0.0.1", port=5000)
+
